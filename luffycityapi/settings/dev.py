@@ -11,9 +11,18 @@ https://docs.djangoproject.com/en/3.2/ref/settings/
 """
 
 from pathlib import Path
+import sys
+# apps into sys path
+sys.path.insert(0,"luffycityapi/apps")
+print(sys.path)
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
+print(BASE_DIR)
+
+# apps into sys.path
+sys.path.insert(0,str(BASE_DIR / "apps"))
+print(sys.path)
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/3.2/howto/deployment/checklist/
@@ -35,12 +44,14 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'rest_framework',
+    'home',
 ]
 
 REST_FRAMEWORK = {
     # 自定义异常处理
-    'EXCEPTION_HANDLER': 'luffycityapi.utils.exceptions.custom_exception_handler',
-},
+    'EXCEPTION_HANDLER': 'luffycityapi.utils.exceptions.custom_exception_handler'
+}
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -221,7 +232,7 @@ CACHES = {
     # 提供存储短信验证码
     "sms_code":{
         "BACKEND": "django_redis.cache.RedisCache",
-        "LOCATION": "redis://:123456@127.0.0.1:6379/2",
+        "LOCATION": "redis://127.0.0.1:6379/2",
         "OPTIONS": {
             "CLIENT_CLASS": "django_redis.client.DefaultClient",
             "CONNECTION_POOL_KWARGS": {"max_connections": 100},
