@@ -254,6 +254,11 @@
     "@vue/compiler-dom" "3.4.21"
     "@vue/shared" "3.4.21"
 
+"@vue/devtools-api@^6.0.0":
+  version "6.6.1"
+  resolved "https://registry.npmmirror.com/@vue/devtools-api/-/devtools-api-6.6.1.tgz#7c14346383751d9f6ad4bea0963245b30220ef83"
+  integrity sha512-LgPscpE3Vs0x96PzSSB4IGVSZXZBZHpfxs+ZA1d+VEPwHdOXowy/Y2CsvCAIFrf+ssVU1pD1jidj505EpUnfbA==
+
 "@vue/reactivity@3.4.21":
   version "3.4.21"
   resolved "https://registry.npmmirror.com/@vue/reactivity/-/reactivity-3.4.21.tgz#affd3415115b8ebf4927c8d2a0d6a24bccfa9f02"
@@ -405,6 +410,13 @@ vite@^5.2.0:
     rollup "^4.13.0"
   optionalDependencies:
     fsevents "~2.3.3"
+
+vue-router@^4.0.13:
+  version "4.0.13"
+  resolved "https://registry.npmmirror.com/vue-router/-/vue-router-4.0.13.tgz#47f06e2f8ff6120bfff3c27ade1356cc9de7d870"
+  integrity sha512-LmXrC+BkDRLak+d5xTMgUYraT3Nj0H/vCbP+7usGvIl9Viqd1UP6AsP0i69pSbn9O0dXK/xCdp4yPw21HqV9Jw==
+  dependencies:
+    "@vue/devtools-api" "^6.0.0"
 
 vue@^3.4.21:
   version "3.4.21"
