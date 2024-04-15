@@ -12,8 +12,9 @@ https://docs.djangoproject.com/en/3.2/ref/settings/
 
 from pathlib import Path
 import sys
+
 # apps into sys path
-sys.path.insert(0,"luffycityapi/apps")
+sys.path.insert(0, "luffycityapi/apps")
 print(sys.path)
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -21,7 +22,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 print(BASE_DIR)
 
 # apps into sys.path
-sys.path.insert(0,str(BASE_DIR / "apps"))
+sys.path.insert(0, str(BASE_DIR / "apps"))
 print(sys.path)
 
 # Quick-start development settings - unsuitable for production
@@ -33,7 +34,7 @@ SECRET_KEY = 'django-insecure-@_u*uhfob)x20rjv)jhiwh#tojr8i#xa16w(h3^h%!l*7=4tn4
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ["*"]
 
 # Application definition
 
@@ -44,7 +45,10 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+
     'rest_framework',
+    'corsheaders',
+
     'home',
 ]
 
@@ -54,6 +58,8 @@ REST_FRAMEWORK = {
 }
 
 MIDDLEWARE = [
+    'corsheaders.middleware.CorsMiddleware',  # cors跨域的中间件
+
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
@@ -62,6 +68,12 @@ MIDDLEWARE = [
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
+
+# 方案1：
+CORS_ORIGIN_WHITELIST = (
+    'http://www.luffycity.cn:3000',
+)
+CORS_ALLOW_CREDENTIALS = False  # 不允许ajax跨域请求时携带cookie
 
 ROOT_URLCONF = 'luffycityapi.urls'
 
@@ -100,10 +112,10 @@ DATABASES = {
         'USER': 'luffycity_user',
         'PASSWORD': 'luffycity',
         'OPTIONS': {
-            'charset': 'utf8mb4', # 连接选项配置,mysql8.0以上无需配置
+            'charset': 'utf8mb4',  # 连接选项配置,mysql8.0以上无需配置
         },
-        'POOL_OPTIONS' : {      # 连接池的配置信息
-            'POOL_SIZE': 10,    # 连接池默认创建的链接对象的数量
+        'POOL_OPTIONS': {  # 连接池的配置信息
+            'POOL_SIZE': 10,  # 连接池默认创建的链接对象的数量
             'MAX_OVERFLOW': 10  # 连接池默认创建的链接对象的最大数量
         }
     }
@@ -230,7 +242,7 @@ CACHES = {
         }
     },
     # 提供存储短信验证码
-    "sms_code":{
+    "sms_code": {
         "BACKEND": "django_redis.cache.RedisCache",
         "LOCATION": "redis://127.0.0.1:6379/2",
         "OPTIONS": {
