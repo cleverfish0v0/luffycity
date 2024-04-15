@@ -20,7 +20,6 @@ class HomeAPIView(APIView):
         logger.debug("debug信息")
         logger.info("info信息")
         redis = get_redis_connection("sms_code")
-        print(1)
         brother = redis.lrange("brother", 0, -1)
         # brother = {'longbatian': 111}
         return Response(brother, status.HTTP_200_OK)
