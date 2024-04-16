@@ -47,7 +47,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
 
     'rest_framework',
-    'corsheaders', # cors跨域子应用
+    'corsheaders',
 
     'home',
 ]
