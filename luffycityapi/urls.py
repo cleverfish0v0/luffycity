@@ -14,10 +14,15 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 from django.contrib import admin
-from django.urls import path, include
+from django.urls import path, include, re_path
 
+from django.conf import settings
+from django.views.static import serve  # 静态文件代理访问模块
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+
+    re_path(r'uploads/(?P<path>.*)', serve, {"document_root": settings.MEDIA_ROOT}),
+
     path('home/', include('luffycityapi.apps.home.urls')),
 ]

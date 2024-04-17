@@ -48,6 +48,22 @@ REST_FRAMEWORK = {
     'EXCEPTION_HANDLER': 'luffycityapi.utils.exceptions.custom_exception_handler'
 }
 
+
+# 访问静态文件的url地址前缀
+STATIC_URL = '/static/'
+# 设置django的静态文件目录[手动创建]
+STATICFILES_DIRS = [
+    BASE_DIR / "static",
+]
+
+
+
+# 项目中存储上传文件的根目录[手动创建]，注意，uploads目录需要手动创建否则上传文件时报错
+MEDIA_ROOT = BASE_DIR / "uploads"
+# 访问上传文件的url地址前缀
+MEDIA_URL = "/uploads/"
+
+
 MIDDLEWARE = [
     'corsheaders.middleware.CorsMiddleware',  # cors跨域的中间件
 
