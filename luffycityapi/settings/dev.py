@@ -13,17 +13,8 @@ https://docs.djangoproject.com/en/3.2/ref/settings/
 from pathlib import Path
 import sys
 
-# apps into sys path
-sys.path.insert(0, "luffycityapi/apps")
-print(sys.path)
-
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
-print(BASE_DIR)
-
-# apps into sys.path
-sys.path.insert(0, str(BASE_DIR / "apps"))
-print(sys.path)
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/3.2/howto/deployment/checklist/
@@ -49,7 +40,7 @@ INSTALLED_APPS = [
     'rest_framework',
     'corsheaders',
 
-    'home',
+    'luffycityapi.apps.home.apps',
 ]
 
 REST_FRAMEWORK = {
