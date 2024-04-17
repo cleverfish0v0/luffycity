@@ -1,7 +1,7 @@
 <template>
   <div class="home">
     <Header></Header>
-
+    <Banner></Banner>
     <Footer></Footer>
   </div>
 </template>
@@ -10,6 +10,7 @@
 // vite中导入非ts.js文件时，必须填写文件后缀
 import Header from "../components/Header.vue"
 import Footer from "../components/Footer.vue"
+import Banner from "../components/Banner.vue"
 
 // 测试CORS的跨域配置是否有问题
 // import axios from "axios"
