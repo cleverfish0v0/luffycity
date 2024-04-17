@@ -15,13 +15,6 @@ import Footer from "../components/Footer.vue"
 // import axios from "axios"
 //
 // const http = axios.create()
-
-import http from "../utils/http";
-
-// 测试服务端的跨域是否配置成功
-http.get("/home/test/").then(response=>{
-  console.log(response.data);
-})
 </script>
 
 <style scoped>
